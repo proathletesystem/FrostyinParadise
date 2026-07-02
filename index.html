@@ -1,22 +1,722 @@
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FROSTY in Paradise™ | Hawaii Holiday Snowman Rental</title>
+  <meta name="description" content="A premium snowman experience for malls, hotels, resorts, military bases, city events, and holiday activations across Hawaii." />
 
-.logo img {
-  height: 54px;
-  width: auto;
-  display: block;
-}
+  <style>
+    :root {
+      --navy: #06283D;
+      --blue: #1363DF;
+      --ice: #DFF6FF;
+      --sand: #FFF6E5;
+      --white: #ffffff;
+      --dark: #111827;
+      --muted: #6B7280;
+      --gold: #F4B860;
+      --radius: 22px;
+      --shadow: 0 20px 60px rgba(0,0,0,0.14);
+    }
 
-.logo-text {
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  font-size: 1.15rem;
-  color: var(--navy);
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.logo-text span {
-  color: var(--blue);
-}
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--dark);
+      background: var(--sand);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 246, 229, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(6, 40, 61, 0.08);
+    }
+
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 58px;
+      width: auto;
+      display: block;
+    }
+
+    .logo-text {
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      font-size: 1.15rem;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .logo-text span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--navy);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: 0 10px 30px rgba(19, 99, 223, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid rgba(6, 40, 61, 0.14);
+    }
+
+    .hero {
+      padding: 96px 0 72px;
+      background:
+        radial-gradient(circle at top right, rgba(223,246,255,0.9), transparent 36%),
+        linear-gradient(135deg, var(--sand), #ffffff);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--ice);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #374151;
+      max-width: 640px;
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 34px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-logo {
+      min-height: 460px;
+      border-radius: 26px;
+      background:
+        linear-gradient(rgba(6,40,61,0.08), rgba(6,40,61,0.18)),
+        url("82308372-D097-4FE2-8484-41A1D566969C.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #06283D;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      color: var(--white);
+    }
+
+    .snowman-note {
+      background: rgba(6, 40, 61, 0.76);
+      padding: 18px;
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      max-width: 100%;
+    }
+
+    .snowman-note strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .snowman-note p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.84);
+      margin-bottom: 0;
+    }
+
+    .section {
+      padding: 86px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    h2 {
+      font-size: clamp(2.1rem, 4vw, 3.7rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      border: 1px solid rgba(6,40,61,0.08);
+    }
+
+    .card h3 {
+      color: var(--navy);
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .card ul {
+      padding-left: 18px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .story-box {
+      background: var(--navy);
+      color: var(--white);
+      padding: 42px;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .story-box h2 {
+      color: var(--white);
+    }
+
+    .story-box p {
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 16px;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .feature {
+      background: var(--white);
+      padding: 22px;
+      border-radius: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      border: 1px solid rgba(6,40,61,0.08);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .gallery-item {
+      min-height: 260px;
+      border-radius: 24px;
+      background: var(--ice);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(6,40,61,0.78);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .booking {
+      background: linear-gradient(135deg, var(--navy), #0B4F6C);
+      color: var(--white);
+    }
+
+    .booking h2,
+    .booking p {
+      color: var(--white);
+    }
+
+    form {
+      background: var(--white);
+      color: var(--dark);
+      padding: 32px;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    label {
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--navy);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border-radius: 12px;
+      border: 1px solid #D1D5DB;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    footer {
+      background: #041826;
+      color: rgba(255,255,255,0.72);
+      padding: 34px 0;
+      text-align: center;
+    }
+
+    footer strong {
+      color: var(--white);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .gallery,
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 64px;
+      }
+
+      .logo img {
+        height: 50px;
+      }
+
+      .logo-text {
+        font-size: 1rem;
+      }
+
+      .hero-logo {
+        min-height: 380px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav {
+        height: 74px;
+      }
+
+      .logo img {
+        height: 44px;
+      }
+
+      .logo-text {
+        display: none;
+      }
+
+      .hero-logo {
+        min-height: 320px;
+        padding: 18px;
+      }
+
+      .snowman-note {
+        padding: 14px;
+      }
+
+      .snowman-note p {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo" aria-label="FROSTY in Paradise home">
+        <img src="82308372-D097-4FE2-8484-41A1D566969C.png" alt="FROSTY in Paradise logo">
+        <div class="logo-text">FROSTY <span>in Paradise™</span></div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#rentals">Rentals</a>
+        <a href="#features">Features</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#booking" class="btn btn-primary">Request Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Seasonal rentals across Hawaii</span>
+          <h1>A Snowman Experience Built for Paradise</h1>
+          <p>
+            Bring a one-of-a-kind winter attraction to malls, hotels, resorts,
+            military bases, events, and holiday destinations across Hawaii.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#booking" class="btn btn-primary">Book for the Season</a>
+            <a href="#booking" class="btn btn-secondary">Request Rental Quote</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-logo">
+            <div class="snowman-note">
+              <strong>Hawaii’s Coolest Holiday Attraction</strong>
+              <p>Family-friendly. Photo-ready. Built for seasonal guest engagement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container split">
+        <div class="story-box">
+          <span class="eyebrow">Prototype history</span>
+          <h2>The Story Behind FROSTY</h2>
+          <p>
+            FROSTY in Paradise™ began as a working prototype invented in Newport Beach
+            on Balboa Island in 2000.
+          </p>
+          <p>
+            Now redesigned for Hawaii, it brings a playful winter photo-op into a tropical
+            setting — creating a unique attraction for guests, families, tourists, and
+            holiday visitors.
+          </p>
+        </div>
+
+        <div>
+          <h2>Not just a display. A seasonal destination.</h2>
+          <p>
+            FROSTY is designed to help high-traffic locations create holiday moments that
+            people photograph, share, and remember.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rentals" class="section">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Rental focused</span>
+          <h2>Built for holiday activations</h2>
+          <p>
+            Seasonal rentals are available from Thanksgiving through New Year’s Eve.
+            Pricing depends on location, access, setup requirements, rental duration,
+            and optional features.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Commercial Locations</h3>
+            <ul>
+              <li>Shopping malls</li>
+              <li>Hotels and resorts</li>
+              <li>Tourist destinations</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Community Events</h3>
+            <ul>
+              <li>City holiday events</li>
+              <li>Christmas villages</li>
+              <li>Military bases</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Private Activations</h3>
+            <ul>
+              <li>Holiday parties</li>
+              <li>Brand activations</li>
+              <li>Seasonal photo experiences</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Public-facing features only</span>
+          <h2>Experience features</h2>
+          <p>
+            The website sells the attraction and rental value — not the internal build,
+            fabrication method, supplier information, or engineering details.
+          </p>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature">Large holiday snowman display</div>
+          <div class="feature">Family-friendly photo opportunity</div>
+          <div class="feature">Designed for tropical holiday environments</div>
+          <div class="feature">Seasonal rental available</div>
+          <div class="feature">Optional security/photo camera</div>
+          <div class="feature">Possible live-feed/social media integration</div>
+          <div class="feature">Delivery, setup, and removal available</div>
+          <div class="feature">Premium guest engagement attraction</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Gallery</span>
+          <h2>Holiday photo moments</h2>
+          <p>
+            Add your Newport Beach / Frosty Too photos and videos here.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="images/prototype-history.jpg" alt="FROSTY prototype history">
+            <div class="gallery-label">Prototype History</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/holiday-photo-moments.jpg" alt="Holiday photo moment">
+            <div class="gallery-label">Holiday Photo Moments</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="images/behind-the-magic.jpg" alt="Behind the Magic coming soon">
+            <div class="gallery-label">Behind the Magic — Coming Soon</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="section booking">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Reserve the season</span>
+          <h2>Reserve FROSTY in Paradise™ for your holiday season.</h2>
+          <p>
+            Request availability, rental pricing, and setup information for your location.
+          </p>
+        </div>
+
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-grid">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required>
+            </div>
+
+            <div>
+              <label for="company">Company / Location</label>
+              <input id="company" name="company" type="text" required>
+            </div>
+
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel">
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required>
+            </div>
+
+            <div>
+              <label for="dates">Desired rental dates</label>
+              <input id="dates" name="dates" type="text" placeholder="Thanksgiving through New Year’s Eve">
+            </div>
+
+            <div>
+              <label for="location-type">Indoor or outdoor?</label>
+              <select id="location-type" name="location_type">
+                <option value="">Select one</option>
+                <option>Indoor</option>
+                <option>Outdoor</option>
+                <option>Both / Unsure</option>
+              </select>
+            </div>
+
+            <div class="full">
+              <label for="island">City / Island</label>
+              <input id="island" name="city_island" type="text" placeholder="Honolulu, Maui, Kauai, Big Island...">
+            </div>
+
+            <div class="full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us about your event, location, access, and rental needs."></textarea>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Request Rental Quote</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>FROSTY in Paradise™</strong> — A Winter Wonder in Paradise</p>
+      <p>© 2026 FROSTY in Paradise™. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
